@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap");
+@import "tailwindcss";
+
+:root {
+  color: #5f495a;
+  background-color: #fff8fb;
+  font-family: "Manrope", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Prata", serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background:
+      radial-gradient(circle at top, rgba(255, 252, 246, 0.94) 0%, rgba(255, 244, 249, 0.95) 48%, rgba(245, 239, 255, 0.95) 100%);
+    color: #5f495a;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.55;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.34) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.34) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: radial-gradient(circle at center, black 28%, transparent 88%);
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: rgba(255, 179, 203, 0.45);
+  }
+
+  #app {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 249, 252, 0.6));
+    box-shadow:
+      0 26px 80px rgba(216, 157, 186, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(22px);
+  }
+
+  .glass-card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.04));
+    pointer-events: none;
+  }
+
+  .soft-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.74);
+    background: rgba(255, 255, 255, 0.76);
+    padding: 0.65rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #89657a;
+    box-shadow: 0 12px 30px rgba(223, 175, 198, 0.18);
+    backdrop-filter: blur(14px);
+  }
+
+  .panel-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #b1869c;
+  }
+
+  .metric-track {
+    height: 0.65rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: rgba(247, 217, 231, 0.84);
+  }
+
+  .metric-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #f7abc8 0%, #f2abd7 46%, #d1b2ff 100%);
+    box-shadow: 0 0 28px rgba(245, 162, 197, 0.46);
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  body::before,
+  .no-print {
+    display: none !important;
+  }
+}
